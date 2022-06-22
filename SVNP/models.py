@@ -26,7 +26,7 @@ class Role(models.Model):
 class User(models.Model):
     name = models.CharField(max_length=50)
     second_name = models.CharField(max_length=50)
-    age = models.PositiveSmallIntegerField()
+    age = models.PositiveSmallIntegerField(0)
     password = models.CharField(max_length=50)
     role = models.ForeignKey(Role, verbose_name="Роль", on_delete=models.SET_NULL, null=True)
 
