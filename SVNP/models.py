@@ -8,9 +8,6 @@ class Project(models.Model):
     name = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
 
-    def create(self):
-        self.save()
-
     def __str__(self):
         return self.name
 
@@ -23,11 +20,13 @@ class Role(models.Model):
         return self.name
 
     class Meta:
-    	verbose_name = "Роль"
+        verbose_name = "Роль"
 
 
 class User(models.Model):
     name = models.CharField(max_length=50)
+    second_name = models.CharField(max_length=50)
+    age = models.PositiveSmallIntegerField()
     password = models.CharField(max_length=50)
     role = models.ForeignKey(Role, verbose_name="Роль", on_delete=models.SET_NULL, null=True)
 
