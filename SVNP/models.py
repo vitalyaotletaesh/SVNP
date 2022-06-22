@@ -6,10 +6,16 @@ from django.utils import timezone
 class Project(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
+    title = models.TextField("Описание")
+
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "Проект"
+        verbose_name_plural = "Проекты"
 
 
 class Role(models.Model):
@@ -21,6 +27,7 @@ class Role(models.Model):
 
     class Meta:
         verbose_name = "Роль"
+        verbose_name_plural = "Роли"
 
 
 class User(models.Model):
@@ -32,3 +39,7 @@ class User(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "Пользователь"
+        verbose_name_plural = "Пользователи"
