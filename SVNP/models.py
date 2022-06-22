@@ -6,7 +6,7 @@ from django.utils import timezone
 class Project(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
-    title = models.TextField("Описание")
+    title = models.TextField("Описание", default='')
 
     created_date = models.DateTimeField(default=timezone.now)
 
@@ -20,7 +20,7 @@ class Project(models.Model):
 
 class Role(models.Model):
     name = models.CharField("Роль", max_length=50)
-    title = models.TextField("Описание")
+    title = models.TextField("Описание", default='')
 
     def __str__(self):
         return self.name
