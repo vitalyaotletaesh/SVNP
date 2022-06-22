@@ -4,7 +4,11 @@ body{
 	color: white;
 }
 
-h1 a {
+h1 h2 h3 h4 h5 h6 a {
     color: #de382c;
     text-decoration: none;
+}
+
+h5 {
+	text-align: right;
 }

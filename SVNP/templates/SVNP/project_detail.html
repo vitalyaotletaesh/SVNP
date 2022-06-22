@@ -1,13 +1,14 @@
 {% extends 'SVNP/base.html' %}
 
 {% block content %}
-   {% for project in projects %}
-		<div class="project">
-			<div class="name">
-				<h1><a href="{% url 'project_detail' pk=project.pk %}">{{ project.name }}</a></h1>
-				<p>Автор: {{ project.author }}. {{ project.created_date }}</p>
-			</div>
-			<p>{{ project.title }}</p>
+	<div class="project">
+		<div class="name">
+			<h1>{{ projects.name }}</h1>
+			<p>Автор: {{ projects.author }}. {{ projects.created_date }}</p>
 		</div>
-	{% endfor %}
+		<p>{{ projects.title }}</p>
+		<div>
+			<p>Добавьте свой файл</p>
+		</div>
+	</div>
 {% endblock %}

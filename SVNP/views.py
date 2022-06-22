@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+
+from .forms import ProjectForm
 from .models import Project
 
 
@@ -8,6 +10,11 @@ def project_list(request):
 
 
 def project_detail(request, pk):
-    project = get_object_or_404(Project, pk=pk)
-    return render(request, 'SVNP/project_detail.html', {'project': project})
+    projects = get_object_or_404(Project, pk=pk)
+    return render(request, 'SVNP/project_detail.html', {'projects': projects})
+
+
+def project_new(request):
+    form = ProjectForm()
+    return render(request, 'SVNP/project_edit.html', {'form': form})
 
