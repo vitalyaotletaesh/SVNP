@@ -1,14 +1,10 @@
-body{
+body {
 	padding-left: 15px;
 	background-color: black;
 	color: white;
 }
 
-h1 h2 h3 h4 h5 h6 a {
+h1, h2, h3, h4, h5, h6, a {
     color: #de382c;
     text-decoration: none;
-}
-
-h5 {
-	text-align: right;
 }
