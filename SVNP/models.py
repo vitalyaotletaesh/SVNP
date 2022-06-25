@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
 
@@ -29,15 +30,11 @@ class Role(models.Model):
         verbose_name_plural = "Роли"
 
 
-class User(models.Model):
-    name = models.CharField(max_length=50)
-    second_name = models.CharField(max_length=50)
-    age = models.PositiveSmallIntegerField(default=0)
-    password = models.CharField(max_length=50)
+class CustomUser(AbstractUser):
     role = models.ForeignKey(Role, verbose_name="Роль", on_delete=models.SET_NULL, null=True)
 
-    def __str__(self):
-        return self.name
+    #def __str__(self):
+    #    return self.name
 
     class Meta:
         verbose_name = "Пользователь"

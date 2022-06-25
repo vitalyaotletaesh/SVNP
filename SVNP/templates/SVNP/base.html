@@ -13,7 +13,7 @@
         		<h2><a href="/">Главная</a></h2>
     		</div>
     		<div class="col-md-1">
-    			{% if user.is_authenticated %}
+    			{% if CustomUser.is_authenticated %}
         			<a href="{% url 'project_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus">Создать проект</span></a>
         		{% endif %}
     		</div>
