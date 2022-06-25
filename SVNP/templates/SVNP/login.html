@@ -1,0 +1,14 @@
+{% extends 'SVNP/base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center">
+    	<form action="." method="post">
+    		<h1 style="text-align: center; margin-top: 50px">Вход</h1>
+        	{{ form.as_p }}
+        	{% csrf_token %}
+        	<p><input type="submit" value="Log-in"></p>
+        	<p>Нет аккаунта? <a href="{% url 'register' %}"> Зарегистрируйтесь</a> </p>
+    	</form>
+
+    </div>
+{% endblock %}

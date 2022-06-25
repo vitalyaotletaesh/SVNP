@@ -8,6 +8,11 @@ class ProjectForm(forms.ModelForm):
         fields = ('author', 'name', 'title', 'created_date')
 
 
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
+
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={"class": "myfield"}))
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput(attrs={"class": "myfield"}))
