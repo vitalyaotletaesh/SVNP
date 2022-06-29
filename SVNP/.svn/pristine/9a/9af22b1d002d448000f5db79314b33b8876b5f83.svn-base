@@ -1,0 +1,16 @@
+{% extends 'SVNP/base.html' %}
+
+{% block content %}
+	<div class="">
+		<h1>Создайте аккаунт</h1>
+	    <form action="." method="post" class="">
+	    	<div class="">
+	    		{{ user_form.as_p }}
+	        	{% csrf_token %}
+	    	</div>
+	        <p><input type="submit" value="Создать"></p>
+	        <p>Уже есть аккаунт? <a href="{% url 'login' %}"> Войти </a> </p>
+    	</form>
+	</div>
+    
+{% endblock %}

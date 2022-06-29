@@ -1,15 +1,13 @@
 {% extends 'SVNP/base.html' %}
 
 {% block content %}
-	<div class="">
-		<h1>Создайте аккаунт</h1>
+	<div class="d-flex justify-content-center">
 	    <form action="." method="post" class="">
-	    	<div class="">
-	    		{{ user_form.as_p }}
-	        	{% csrf_token %}
-	    	</div>
-	        <p><input type="submit" value="Создать"></p>
-	        <p>Уже есть аккаунт? <a href="{% url 'login' %}"> Войти </a> </p>
+			<h1 style="text-align: center; margin-top: 50px">Создайте аккаунт</h1>
+			{{ user_form.as_p }}
+			{% csrf_token %}
+	        <button type="submit" class="btn btn-primary">Создать</button>
+	        <span style="margin-left: 15px">Уже есть аккаунт? <a href="{% url 'login' %}"> Войти </a></span>
     	</form>
 	</div>
     

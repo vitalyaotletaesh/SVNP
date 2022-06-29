@@ -6,8 +6,8 @@
     		<h1 style="text-align: center; margin-top: 50px">Вход</h1>
         	{{ form.as_p }}
         	{% csrf_token %}
-        	<p><input type="submit" value="Log-in"></p>
-        	<p>Нет аккаунта? <a href="{% url 'register' %}"> Зарегистрируйтесь</a> </p>
+        	<button type="submit" class="btn btn-primary">Войти</button>
+        	<span style="margin-left: 15px"> Нет аккаунта? <a href="{% url 'register' %}"> Зарегистрируйтесь</a></span>
     	</form>
 
     </div>

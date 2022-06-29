@@ -1,12 +1,10 @@
 {% extends 'SVNP/base.html' %}
 
 {% block content %}
-	<div class="project">
-		<h1>{{ projects.name }}</h1>
-		<p>Автор: {{ projects.author }}. {{ projects.created_date }}</p>
-		<p>{{ projects.title }}</p>
-		<div>
-			<p>Добавьте свой файл</p>
-		</div>
-	</div>
+	<h3 style="margin-top: 20px">{{ projects.name }}</h3>
+	{{ files }}
+	<p>Версия файла: {{ files.file_version }}</p>
+	<p>Дата изменения: {{ files.file_change_date }}</p>
+	<p>Последняя версия: </p>
+	<a href="{% url 'file_upload' %}">Добавьте свой файл</a>
 {% endblock %}

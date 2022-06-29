@@ -3,9 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import UserRegistrationForm, LoginForm
+from .forms import UserRegistrationForm, LoginForm, FileUploadForm
 from .forms import ProjectForm
-from .models import Project
+from .models import Project, File
 from django.utils import timezone
 
 
@@ -33,6 +33,22 @@ def project_new(request):
     return render(request, 'SVNP/project_edit.html', {'form': form})
 
 
+def file_data(request):
+    files = File.objects.order_by('file_version')
+    return render(request, 'SVNP/project_detail.html', {'files': files})
+
+
+def file_upload(request):
+    if request.method == 'POST':
+        file = FileUploadForm(request.POST, request.FILES)
+        if file.is_valid():
+            file.save()
+            return redirect('project_list')
+    else:
+        file = FileUploadForm()
+    return render(request, 'SVNP/file_upload.html', {'file': file})
+
+
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -57,20 +73,12 @@ def user_logout(request):
     return redirect('login')
 
 
-@login_required
-def dashboard(request):
-    return render(request, 'SVNP/dashboard.html', {'section': 'dashboard'})
-
-
 def register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
-            # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
-            # Set the chosen password
             new_user.set_password(user_form.cleaned_data['password'])
-            # Save the User object
             new_user.save()
             return render(request, 'SVNP/register_done.html', {'new_user': new_user})
     else:

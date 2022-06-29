@@ -2,12 +2,8 @@
 
 {% block content %}
 	{% for project in projects %}
-		<div class="project">
-			<div class="name">
-				<h1><a href="{% url 'project_detail' pk=project.pk %}">{{ project.name }}</a></h1>
-				<p>Автор: {{ project.author }}. {{ project.created_date }}</p>
-			</div>
-			<p>{{ project.title }}</p>
-		</div>
+		<h3 style="margin-top: 20px"><a href="{% url 'project_detail' pk=project.pk %}">{{ project.name }}</a></h3>
+		<p>Автор: {{ project.author }}. {{ project.created_date }}</p>
+		<p>{{ project.title }}</p>
 	{% endfor %}
 {% endblock %}
