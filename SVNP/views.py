@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-
+from . import svn_commands_script
 from .forms import UserRegistrationForm, LoginForm, FileUploadForm
 from .forms import ProjectForm
 from .models import Project, File
@@ -43,7 +43,9 @@ def file_upload(request):
         file = FileUploadForm(request.POST, request.FILES)
         if file.is_valid():
             file.save()
+            svn_commands_script.svn_commit()
             return redirect('project_list')
+
     else:
         file = FileUploadForm()
     return render(request, 'SVNP/file_upload.html', {'file': file})
